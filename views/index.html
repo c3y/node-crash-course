@@ -1,0 +1,42 @@
+<html lang="en">
+{% include("./partials/head.html") %}
+
+<body>
+  {% include("./partials/nav.html") %}
+
+  <div class="blogs content">
+    <h2>All Blogs</h2>
+
+<!--     <% if (blogs.length > 0) { %>
+      <% blogs.forEach(blog => { %>
+
+        <h3 class="title"><%= blog.title %></h3>
+        <p class="snippet"><%= blog.snippet %></p>
+
+      <% }) %>
+    <% } else { %>
+      <p>There are no blogs to display...</p>
+    <% } %> -->
+
+    {% if (blogs.length) > 0 %}
+      {% for blog in blogs %}
+        
+      <h3 class="title"> {{blog.title}} </h3>
+      <p class="snippet"> {{blog.snippet}} </p>
+
+      {% endfor %}
+    {% else %}
+      <p>There are no blogs to display...</p>
+    {% endif %}
+
+    <!-- {% for item in items %}
+    <li>{{ item.title }}</li>
+    {% else %}
+    <li>This would display if the 'item' collection were empty</li>
+    {% endfor %} -->
+    
+  </div>
+
+  {% include("./partials/footer.html") %}
+</body>
+</html>

@@ -1,14 +1,22 @@
-const express = require('express');
+const express = require('express'),
+      nunjucks = require('nunjucks');
 
 // express app
-const app = express();
+var app = express();
 
 // listen for requests
 app.listen(3000);
 
 // register view engine
-app.set('view engine', 'ejs');
+//app.set('view engine', 'ejs');
 // app.set('views', 'myviews');
+
+nunjucks.configure('views', {
+  autoescape: true,
+  express   : app
+});
+
+app.set('view engine', 'html');
 
 app.get('/', (req, res) => {
   const blogs = [
